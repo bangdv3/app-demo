@@ -4,6 +4,9 @@ pipeline {
             label 'jenkin_agent'
         }
     }
+    trigger {
+        pollSCM '*/5 * * * *'
+    }
     stages {
         stage('Build') {
             steps {
