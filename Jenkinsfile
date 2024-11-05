@@ -4,16 +4,24 @@ pipeline {
             label 'jenkin_agent_docker'
         }
     }
+    environment { 
+        IMAGE_NAME = "app-demo" 
+        IMAGE_TAG = "${env.BRANCH_NAME}-${env.BUILD_ID}"
+    }
     triggers {
         pollSCM '*/5 * * * *'
     }
     stages {
+        stage('Checkout') {
+            steps { 
+                git branch: 'main', url: 'https://github.com/bangdv3/app-demo.git'
+            }
+        }
         stage('Build') {
             steps {
-                echo "Build Stage for app-demo"
-                sh ''' 
-                    docker --version
-                '''
+                script {
+                    docker.build("${IMAGE_NAME}:${IMAGE_TAG}")
+                }
             }
         }
         stage('Test') {
