@@ -4,7 +4,7 @@ pipeline {
             label 'jenkin_agent'
         }
     }
-    trigger {
+    triggers {
         pollSCM '*/5 * * * *'
     }
     stages {
