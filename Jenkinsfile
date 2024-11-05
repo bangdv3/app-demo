@@ -25,7 +25,7 @@ pipeline {
                 }
             }
             steps {
-                 
+                echo "build done?"
             }
         }
         stage('Test') {
