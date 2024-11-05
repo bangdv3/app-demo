@@ -1,0 +1,14 @@
+{
+  "author": "bangdv",
+  "license": "ISC",
+  "name": "app-demo",
+  "version": "1.0.0",
+  "description": "simple api showing IP/port",
+  "main": "src/index.js",
+  
+  "dependencies": {
+    "ip": "^2.0.1",
+    "express": "^4.18.2",
+    "morgan": "^1.10.0"
+  }
+}
