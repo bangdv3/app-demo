@@ -1,9 +1,10 @@
 pipeline {
-    agent {
-        node {
-            label 'jenkin_agent_docker'
-        }
-    }
+    agent any
+    // agent {
+    //     node {
+    //         label 'jenkin_agent_docker'
+    //     }
+    // }
     environment { 
         IMAGE_NAME = "app-demo" 
         IMAGE_TAG = "${env.BRANCH_NAME}-${env.BUILD_ID}"
@@ -18,12 +19,13 @@ pipeline {
             }
         }
         stage('Build') {
+            agent {
+                docker {
+                    image 'node:18-alpine'
+                }
+            }
             steps {
-                
-                sh '''
-                    docker build -t app-demo:1.1 .
-                '''
-                
+                 
             }
         }
         stage('Test') {
