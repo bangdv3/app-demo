@@ -19,11 +19,11 @@ pipeline {
         }
         stage('Build') {
             steps {
-                script {
-                    sh '
-                        docker build -t app-demo:1.1 .
-                    '
-                }
+                
+                sh '''
+                    docker build -t app-demo:1.1 .
+                '''
+                
             }
         }
         stage('Test') {
