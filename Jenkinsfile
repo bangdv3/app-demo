@@ -1,7 +1,7 @@
 pipeline {
     agent {
         node {
-            label 'jenkin_agent'
+            label 'jenkin_agent_docker'
         }
     }
     triggers {
@@ -10,9 +10,9 @@ pipeline {
     stages {
         stage('Build') {
             steps {
-                echo "Build Stage"
+                echo "Build Stage for app-demo"
                 sh ''' 
-                    echo "Run some commands"
+                    docker --version
                 '''
             }
         }
