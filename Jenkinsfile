@@ -20,7 +20,9 @@ pipeline {
         stage('Build') {
             steps {
                 script {
-                    docker.build("${IMAGE_NAME}:${IMAGE_TAG}")
+                    sh '
+                        docker build -t app-demo:1.1 .
+                    '
                 }
             }
         }
