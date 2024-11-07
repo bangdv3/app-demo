@@ -1,9 +1,5 @@
 pipeline {
-    agent {
-        node {
-            label 'jenkin_agent_docker'
-        }
-    }
+    agent any
     environment { 
         DOCKER_USERNAME = 'bbox1168'
         DOCKER_PASSWORD = credentials('docker-hub-password') 
@@ -14,6 +10,12 @@ pipeline {
         pollSCM '*/5 * * * *'
     }
     stages {
+        agent {
+            docker {
+                image 'node:20-alpine'
+                reuseNode true
+            }
+        }
         stage('Checkout') {
             steps { 
                 git branch: 'main', url: 'https://github.com/bangdv3/app-demo.git'
