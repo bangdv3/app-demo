@@ -6,9 +6,9 @@ pipeline {
         IMAGE_NAME = 'bbox1168/app-demo'
         IMAGE_TAG = "1.${env.BUILD_ID}"
     }
-    triggers {
-        pollSCM '*/5 * * * *'
-    }
+    // triggers {
+    //     pollSCM '*/5 * * * *'
+    // }
     stages {
         
         stage('Checkout') {
