@@ -1,10 +1,5 @@
 pipeline {
-    agent {
-            docker {
-                image 'node:20-alpine'
-                reuseNode true
-            }
-        }
+    agent any
     environment { 
         DOCKER_USERNAME = 'bbox1168'
         DOCKER_PASSWORD = credentials('docker-hub-password') 
